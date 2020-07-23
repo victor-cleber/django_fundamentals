@@ -1,10 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My transactions</title>
 </head>
 <body>
-$END$
+<h2>List of transactions</h2>
+<ul>
+    {% for t in transactions %}
+        <li><a href="{% url 'update' t.id %}">{{ t.description }} </a> - {{ t.dt_transaction}} - {{ t.value }} - {{ t.category }} - {{ t.observation}}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'new' %}">New Transaction</a>
 </body>
 </html>
